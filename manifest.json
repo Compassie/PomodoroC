@@ -1,0 +1,16 @@
+{
+  "short_name": "FocusStar",
+  "name": "Focus Star Timer",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1828/1828884.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#1a1a2e",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#1a1a2e"
+}
