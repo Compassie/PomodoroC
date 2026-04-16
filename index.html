@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Star</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #1a1a2e; color: white; padding-top: 50px; }
+        #timer { font-size: 4rem; margin: 20px; font-weight: bold; }
+        button { padding: 15px 40px; font-size: 1.2rem; cursor: pointer; border-radius: 50px; border: none; background: #e94560; color: white; }
+        #stars { font-size: 2.5rem; margin-top: 20px; color: #f9d71c; }
+        .status { color: #aaa; margin-top: 10px; height: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>Focus Timer</h1>
+    <div id="timer">25:00</div>
+    <button id="startBtn">Start Focus</button>
+    <div id="status" class="status"></div>
+    <div id="stars"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
