@@ -1,4 +1,4 @@
-let timeLeft = 25 * 60; // 25 minutes in seconds
+let timeLeft = 25 * 60; 
 let timerId = null;
 let lastTimestamp = null;
 let isRunning = false;
@@ -22,10 +22,10 @@ function tick() {
     if (timeLeft > 0) {
         timeLeft--;
         updateDisplay();
-        lastTimestamp = Date.now(); // Record the last known "active" second
+        lastTimestamp = Date.now(); 
     } else {
         addStar();
-        timeLeft = 25 * 60; // Reset for next star
+        timeLeft = 25 * 60; 
         updateDisplay();
     }
 }
@@ -39,28 +39,28 @@ function startTimer() {
     statusDisplay.textContent = "Focusing...";
 }
 
-// THE KEY FEATURE: Visibility Detection
+// Logic for screen-off and tab-switching
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-        // User switched apps or locked screen - Pause the interval
+        // App is in background or screen is off
         clearInterval(timerId);
-        statusDisplay.textContent = "Paused - Stay on the page!";
     } else {
-        // User returned - Check how much time passed
+        // User returned to the app
         if (isRunning) {
             const now = Date.now();
             const gapInSeconds = Math.floor((now - lastTimestamp) / 1000);
             
-            // Re-sync the timer by subtracting the time the phone was off/idle
+            // Subtract the time that passed while the screen was off
             timeLeft -= gapInSeconds;
             
-            if (timeLeft < 0) {
-                // If they were away long enough to earn a star
+            // Logic if they earned a star while the screen was off
+            while (timeLeft <= 0) {
                 addStar();
-                timeLeft = (25 * 60) + timeLeft; // Handle overflow
+                timeLeft += (25 * 60);
             }
             
             updateDisplay();
+            lastTimestamp = Date.now();
             timerId = setInterval(tick, 1000);
             statusDisplay.textContent = "Focusing...";
         }
